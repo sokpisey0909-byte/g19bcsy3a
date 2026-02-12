@@ -26,7 +26,7 @@
               
               <li><a class="dropdown-item" href="<?php echo $basedUrl; ?>?page=register">Register</a></li>
             <?php } else { ?>
-              <li><a class="dropdown-item" href="<?php echo $basedUrl; ?>?page=profile">Profile</a></li>
+              <li><a class="dropdown-item" href="<?php echo $basedUrl; ?>?page=Profile">Profile</a></li>
               <li><a class="dropdown-item" href="<?php echo $basedUrl; ?>?page=logout">Logout</a></li>
               <?php
             }

@@ -91,4 +91,5 @@ function setUserNewPassword($password)
     }
     return false;
 }
+
 ?>
