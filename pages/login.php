@@ -13,7 +13,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     $passwordError = 'Please input password.';
   }
   if (empty($usernameError) && empty($passwordError)) {
-    $user = logInUser($username, $password);
+    $user = loginUserIn($username, $password);
     if ($user !== false) {
       $_SESSION['user_id'] = $user->id;
       header('Location: ./?dashboard');

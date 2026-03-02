@@ -16,21 +16,35 @@ if (isset($_POST['changePasswd'], $_POST['oldPasswd'], $_POST['newPasswd'], $_PO
         $newPasswdErr = 'password does not match';
     } else {
         if (!isUserHasPassword($oldPasswd)) {
-            $oldPasswdErr = 'password is incorrect';
+            $oldPasswdErr = 'old password is incorrect';
         }
     }
     if (empty($oldPasswdErr) && empty($newPasswdErr)) {
-        if (setUserNewPassword($newPasswd)) {
-            unset($_SESSION['user_id']);
-            echo '<div class="alert alert-success" role="alert">
-                password changed successfully. <a href="./?page=login">click here</a> to login again.
-                </div>';
+        if (setUserNewPassowrd($newPasswd)) {
+            header('Location: ./?page=logout');
         } else {
-            echo '<div class="alert alert-danger" role="alert">
-                try aggain.
-                </div>';
+            echo '<div class="alert alert-danger" role="alert">try again later</div>';
         }
     }
+}
+if (isset($_POST['uploadPhoto'], $_FILES['photo'])) {
+    $photo = $_FILES['photo'];
+    if (empty($photo['name'])) {
+        echo '<div class="alert alert-danger">please select a photo to upload</div>';
+    } else {
+        try {
+            if (changeProfileImage($photo)) {
+                echo '<div class="alert alert-success" role="alert">Profile image changed successfully</div>';
+            } else {
+                echo '<div class="alert alert-danger" role="alert">Failed to change profile image</div>';
+            }
+        } catch (Exception $e) {
+            echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '</div>';
+        }
+    }
+}
+if (isset($_POST['deletePhoto'])) {
+    deleteProfileImage();
 }
 ?>
 
@@ -39,8 +53,10 @@ if (isset($_POST['changePasswd'], $_POST['oldPasswd'], $_POST['newPasswd'], $_PO
         <form method="post" action="./?page=profile" enctype="multipart/form-data">
             <div class="d-flex justify-content-center">
                 <input name="photo" type="file" id="profileUpload" hidden>
+                <!-- Label use for profileupload and focus on image(defualt)-->
                 <label role="button" for="profileUpload">
-                    <img src="./assets/img/image.jpg" class="rounded">
+                    <img src="<?php echo empty(loggedInUser()->photo) ? './assets/image/emptyuser.png' : loggedInUser()->photo ?>" 
+                    class="rounded img-thumbnail" style="max-width: 200px;">
                 </label>
             </div>
             <div class="d-flex justify-content-center">
