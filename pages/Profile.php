@@ -50,12 +50,12 @@ if (isset($_POST['deletePhoto'])) {
 
 <div class="row">
     <div class="col-6">
-        <form method="post" action="./?page=profile" enctype="multipart/form-data">
+        <form method="post" action="./?page=Profile" enctype="multipart/form-data">
             <div class="d-flex justify-content-center">
                 <input name="photo" type="file" id="profileUpload" hidden>
                 <!-- Label use for profileupload and focus on image(defualt)-->
                 <label role="button" for="profileUpload">
-                    <img src="<?php echo empty(loggedInUser()->photo) ? './assets/image/emptyuser.png' : loggedInUser()->photo ?>" 
+                    <img src="<?php echo empty(loggedInUser()->photo) ? './assets/img/image.jpg' : loggedInUser()->photo ?>" 
                     class="rounded img-thumbnail" style="max-width: 200px;">
                 </label>
             </div>
@@ -67,7 +67,7 @@ if (isset($_POST['deletePhoto'])) {
     </div>
 
     <div class="col-6">
-        <form method="post" action="./?page=profile" class="col-md-8 col-lg-6 mx-auto">
+        <form method="post" action="./?page=Profile" class="col-md-8 col-lg-6 mx-auto">
             <h3>Change Password</h3>
             <div class="mb-3">
                 <label class="form-label">Old Password</label>

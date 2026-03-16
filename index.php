@@ -5,10 +5,10 @@ $isAdmin = isAdmin();
 include './includes/header.inc.php';
 include './includes/navbar.inc.php';
 
-$available_pages = ['login', 'register', 'logout', 'dashboard', 'profile', 'user/list', 'user/create'];
-$logged_in_pages = ['dashboard', 'profile'];
+$logged_in_pages = ['dashboard', 'Profile'];
 $non_logged_in_pages = ['login', 'register'];
-$admin_pages = ['user/list', 'user/create'];
+$Admin_pages = ['user/list', 'user/create', 'user/update', 'user/deleted'];
+$available_pages = ['logout', ...$logged_in_pages, ...$non_logged_in_pages, ...$Admin_pages];
 
 $page = '';
 if (isset($_GET['page'])) {
@@ -21,9 +21,10 @@ if (in_array($page, $non_logged_in_pages) && !empty($user)) {
     header('Location: ./?page=dashboard');
 }
 if (in_array($page, $available_pages)) {
-    if (in_array($page, $admin_pages) && !$isAdmin) {
+    if (in_array($page, $Admin_pages) && !isAdmin()) {
         header('Location: ./?page=dashboard');
     }
+
 
     include './pages/' . $page . '.php';
 } else {

@@ -53,7 +53,7 @@ function loggedInUser()
 function isAdmin()
 {
     $user = loggedInUser();
-    if ($user && $user->Level === 'Admin') {
+    if ($user && $user->Level === 'admin') {
         return true;
     }
     return false;
@@ -126,7 +126,7 @@ function uploadImage($image)
     $tmp_name = $image['tmp_name'];
     $error = $image['error'];
 
-    $dir = './assets/image/';
+    $dir = './assets/img/';
 
     $allowed_exs = ['jpg', 'jpeg', 'png'];
     // Pathinfo use to get the file extension and check if it's allowed
@@ -148,3 +148,6 @@ function uploadImage($image)
     move_uploaded_file($tmp_name, $image_path);
     return $image_path;
 }
+
+
+?>

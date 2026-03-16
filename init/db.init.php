@@ -6,7 +6,7 @@ $db_pass = '';
 $db_port = 3307;
 // for store connection database
 $db = new mysqli($db_host, $db_user, $db_pass, $db_name, $db_port);
-$basedUrl = '/G19BCSY3A/';
+$basedUrl = '/g19bcsy3a/';
 if ($db->connect_error) {
     echo $db->connect_error;
     die();
