@@ -11,25 +11,25 @@
                 <th>Photo</th>
                 <th>Name</th>
                 <th>Option</th>
-                
+
             </tr>
 
             <?php
-                
-                $users = getUsers();
-                if($users){
-                    $count = 1;
-                    while($row = $users->fetch_object()){
-                        echo '<tr>
-                                <td>'.$count++.'</td>
+
+            $users = getUsers();
+            if ($users) {
+                $count = 1;
+                while ($row = $users->fetch_object()) {
+                    echo '<tr>
+                                <td>' . $count++ . '</td>
                                 <th>
 
-                                <img src="'.($row->photo ?? './assets/img/image.jpg').'"
+                                <img src="' . ($row->photo ?? './assets/img/image.jpg') . '"
                                  class="rounded img-thumbnail" style="max-width: 100px;">
 
                                 </td>
  
-                                <td>'.$row->name.'</td>
+                                <td>' . $row->name . '</td>
                                 <td>
                                 <a href="./?page=user/update&id=' . $row->id . '" 
                                 role="button" class="btn btn-primary">
@@ -41,13 +41,13 @@
                                 </a> 
                                 
                             </tr>';
-                            
-                            $count++;
-                            
-                        
-                    }
-                    
+
+                    $count++;
+
+
                 }
+
+            }
             ?>
         </table>
         </thead>

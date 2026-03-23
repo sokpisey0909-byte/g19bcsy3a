@@ -4,18 +4,17 @@ $targetUser = readUser($id);
 
 if ($targetUser == null || $targetUser->Level == 'admin') {
     header("location : ./?page=user/list");
-}else{
+} else {
     if (deleteUser($id)) {
         echo '<div class="alert alert-success" role="alert">
         Delete successful! <a href="./?page=user/list" class="alert-link">go to List</a>.
         </div>';
-    }
-        else {
-            echo '<div class="alert alert-danger" role="alert">
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
             Delete failed! Please try again.
             <a> href="./?page=user/list" class="alert-link">go to List</a>.
             </div>';
-        }
+    }
 }
 
 

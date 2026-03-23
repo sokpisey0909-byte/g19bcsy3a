@@ -35,9 +35,9 @@ if (isset($_POST['name'], $_POST['username'], $_POST['password'], $_FILES['photo
                 echo '<div class="alert alert-danger" role="alert">
             Update failed! Please try again.
             </div>';
-        }
-    } catch (Exception $e) {
-        echo '<div class="alert alert-danger" role="alert">
+            }
+        } catch (Exception $e) {
+            echo '<div class="alert alert-danger" role="alert">
             Update failed! Please try again.
             </div>';
         }
@@ -48,12 +48,14 @@ if (isset($_POST['name'], $_POST['username'], $_POST['password'], $_FILES['photo
 
 
 
-<form method="post" action="./?page=user/update&id=<?php echo $id ?>" enctype="multipart/form-data" class="col-md-10 col-lg-6 mx-auto">
+<form method="post" action="./?page=user/update&id=<?php echo $id ?>" enctype="multipart/form-data"
+    class="col-md-10 col-lg-6 mx-auto">
     <h3>Update User</h3>
     <div class="d-flex justify-content-center">
         <input name="photo" type="file" id="profileUpload" hidden>
         <label role="button" for="profileUpload">
-            <img src="<?php echo $targetUser->photo ?? './assets/img/image.jpg' ?>" class="rounded img-thumbnail" style="max-width:200px">
+            <img src="<?php echo $targetUser->photo ?? './assets/img/image.jpg' ?>" class="rounded img-thumbnail"
+                style="max-width:200px">
         </label>
     </div>
     <div class="mb-3">
